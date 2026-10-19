@@ -5,14 +5,11 @@ import { fileURLToPath } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
 const requiredDirectories = [
-  '.agents/skills', '.github/workflows', 'design/prototypes', 'design/system',
-  'design/assets', 'docs/mvp', 'docs/product', 'docs/architecture/decisions',
-  'docs/api', 'docs/development', 'apps/web/src', 'apps/web/public',
+  '.agents/skills', 'design/prototypes', 'docs', 'apps/web/src',
   'apps/desktop/src', 'apps/desktop/src-tauri',
   'services/backend/src/main/java', 'services/backend/src/main/resources',
   'services/backend/src/test/java', 'database/schema',
-  'database/migrations/sqlite', 'database/seeds', 'infra/nginx', 'infra/deploy',
-  'tests/integration', 'tests/e2e', 'scripts',
+  'database/migrations', 'scripts',
 ];
 for (const path of requiredDirectories) {
   const target = resolve(root, path);
@@ -44,10 +41,8 @@ for (const [directory, name] of expectedPackages) {
 }
 
 const requiredFiles = [
-  'README.md', 'AGENTS.md', 'CONTRIBUTING.md', 'CHANGELOG.md', '.gitignore',
-  '.editorconfig', '.gitattributes', '.agents/skills/README.md',
-  '.github/workflows/structure.yml', '.github/PULL_REQUEST_TEMPLATE.md',
-  '.github/ISSUE_TEMPLATE/bug_report.md', '.github/ISSUE_TEMPLATE/feature_request.md',
+  'README.md', 'AGENTS.md', '.gitignore', '.editorconfig', '.gitattributes',
+  'docs/product.md', 'docs/technical.md', 'docs/mvp.md',
 ];
 for (const path of requiredFiles) {
   if (!existsSync(resolve(root, path))) errors.push(`缺少文件：${path}`);
