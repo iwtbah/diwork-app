@@ -1,0 +1,8 @@
+{
+  "name": "diwork-app",
+  "version": "0.0.0",
+  "private": true,
+  "description": "个人工作管理平台多端项目工作区",
+  "engines": { "node": ">=22" },
+  "scripts": { "check": "node scripts/check-structure.mjs" }
+}

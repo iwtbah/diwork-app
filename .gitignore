@@ -1,0 +1,50 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+*.swp
+
+# Dependencies / build output
+node_modules/
+.pnpm-store/
+dist/
+build/
+coverage/
+.vite/
+.turbo/
+target/
+out/
+*.tsbuildinfo
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+.aws/
+
+# Runtime data and reports
+.runtime/
+data/
+backups/
+logs/
+*.log
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+playwright-report/
+test-results/
+
+# Python helpers
+__pycache__/
+.venv/
