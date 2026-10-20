@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>diwork · 执行轨道</title>
+  <link rel="stylesheet" href="desktop-workbench-a.css" />
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></symbol>
+    <symbol id="i-checklist" viewBox="0 0 24 24"><path d="m3 7 2 2 3-4M11 7h10M3 17l2 2 3-4M11 17h10"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z M7 8h10M7 12h10M7 16h7"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15.5A8 8 0 0 1 8.5 4 8.2 8.2 0 1 0 20 15.5Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4m0-14.2-1.4 1.4M6.3 17.7l-1.4 1.4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="m15 5 4 4M4 20l5-1 10-10a2.8 2.8 0 0 0-4-4L5 15l-1 5Z"/></symbol>
+  </svg>
+  <div class="shell" inert>
+    <aside class="sidebar" aria-label="主导航">
+      <div class="brand"><div class="brand-mark">d/</div><span class="brand-name">diwork</span></div>
+      <div class="workspace-label">个人空间</div>
+      <nav class="nav">
+        <button class="active" aria-current="page" data-page="home" title="工作台"><svg class="icon"><use href="#i-grid"/></svg><span>工作台</span></button>
+        <button data-page="plans" title="工作计划"><svg class="icon"><use href="#i-calendar"/></svg><span>工作计划</span></button>
+        <button data-page="tasks" title="任务中心"><svg class="icon"><use href="#i-checklist"/></svg><span>任务中心</span></button>
+        <button data-page="logs" title="工作记录"><svg class="icon"><use href="#i-note"/></svg><span>工作记录</span></button>
+      </nav>
+      <div class="sidebar-bottom"><div class="side-note">让计划落到任务，让进展留有记录。</div></div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div class="breadcrumbs"><strong>工作台</strong><span>/</span><span>今天</span></div>
+        <div class="top-actions"><button class="calendar-dock" id="calendarDock" hidden aria-label="展开工作日历" aria-expanded="false"><span class="closed-calendar-cover"><span class="closed-calendar-year" data-dock-year>2026</span><strong data-dock-month>10</strong><span class="closed-calendar-label">工作日历</span></span><span class="closed-calendar-pages" aria-hidden="true"></span></button>
+          <button class="search-trigger" id="searchTrigger" aria-label="搜索任务"><svg class="icon icon-sm"><use href="#i-search"/></svg><span>搜索任务</span><kbd>⌘ K</kbd></button>
+          <button class="icon-button" id="themeToggle" aria-label="切换主题" title="切换亮色或暗色主题"><svg class="icon"><use href="#i-moon"/></svg></button>
+          <div class="avatar" aria-label="个人空间">我</div>
+        </div>
+      </header>
+      <div class="page" id="page-home">
+        <section class="page-intro">
+          <div><div class="date-label">2026 年 10 月 20 日 · 星期二</div><h1>把今天的事，推进一步。</h1><p class="subtitle">拖动任务推进工作，翻阅日历安排接下来。</p></div>
+          <button class="primary" id="createTask"><svg class="icon"><use href="#i-plus"/></svg>新建临时任务</button>
+        </section>
+        <section class="overview dashboard" aria-label="工作概览">
+          <div class="dashboard-today"><div class="dashboard-heading">今日执行 <span>10 / 20</span></div><div class="today-focus"><div class="today-orbit" id="todayOrbit" role="img"><div><strong id="todayFinished">1</strong><span>已完成</span></div></div><div class="today-totals"><div class="metric-label">今日任务</div><div class="metric-value" id="todayCount">4<small>项</small></div><div class="pending-caption">尚未完成 <strong id="pendingCount">3<small>项</small></strong></div></div></div><p id="todaySummary"></p></div>
+          <div class="dashboard-week"><div class="dashboard-heading">本周执行节奏 <div><strong id="weekRate">14<small>%</small></strong><span>完成率</span></div></div><div class="week-rhythm" id="weekRhythm"></div><div class="progress-line week-baseline"><span id="weekProgress"></span></div><div class="rhythm-key"><span><i></i>已完成</span><span>点击查看当天安排</span></div></div>
+          <div class="dashboard-risk"><div class="dashboard-heading">逾期任务 <span class="risk-signal" aria-hidden="true">!</span></div><div class="metric-value alert">1<small>项</small></div><p id="overdueSummary"></p><button class="text-button" id="viewOverdue">查看逾期任务 <svg class="icon icon-sm"><use href="#i-chevron-right"/></svg></button></div>
+        </section>
+        <section class="home-goal-section" aria-labelledby="goalHeading"><div class="home-section-heading"><div><h2 id="goalHeading">目标推进</h2><p>看清当前阶段，衔接下一步工作。</p></div><span class="goal-section-hint">点击目标查看时间安排</span></div><div class="goal"></div></section>
+        <section class="home-board-section" aria-labelledby="taskHeading">
+          <div class="home-section-heading"><div><h2 id="taskHeading">今日任务</h2><p>拖到另一列，即可调整任务状态。</p></div><button class="text-button" id="taskViewAll">查看全部任务</button></div>
+          <div class="board-scroll" id="taskList"></div>
+        </section>
+
+
+      </div>
+      <section class="page workspace-page" id="page-plans" hidden aria-label="工作计划"></section>
+      <section class="page workspace-page" id="page-tasks" hidden aria-label="任务中心"></section>
+      <section class="page workspace-page" id="page-logs" hidden aria-label="工作记录"></section>
+    </main>
+  </div>
+  <section class="calendar-stage" id="calendarStage" role="dialog" aria-modal="true" aria-labelledby="calendarStageTitle">
+    <header class="calendar-stage-bar"><div class="brand"><div class="brand-mark">d/</div><span class="brand-name">diwork</span><span class="calendar-stage-caption">工作日历</span></div><button class="icon-button" id="calendarThemeToggle" aria-label="切换主题"><svg class="icon"><use href="#i-moon"/></svg></button></header>
+    <div class="calendar-stage-intro"><div><div class="section-kicker">工作日历</div><h1 id="calendarStageTitle">先看看这个月的安排。</h1></div><button class="primary" id="enterWorkspace">进入工作台<svg class="icon icon-sm"><use href="#i-chevron-right"/></svg></button></div>
+        <section class="desk-calendar" id="calendarBook" aria-labelledby="calendarMonthTitle">
+          <div class="calendar-binding" aria-hidden="true"><span></span><span></span></div>
+          <div class="calendar-page-surface" id="calendarPageSurface">
+          <header class="desk-calendar-head"><div class="month-identity"><span class="month-index" id="calendarMonthNumber">10</span><div><div id="calendarYear">2026 年</div><h2 id="calendarMonthTitle" aria-live="polite">十月工作日历</h2></div></div><div class="month-navigation"><button class="icon-button" id="prevMonth" aria-label="上个月"> <svg class="icon"><use href="#i-chevron-left"/></svg></button><button class="secondary" id="currentMonth">回到本月</button><button class="icon-button" id="nextMonth" aria-label="下个月"><svg class="icon"><use href="#i-chevron-right"/></svg></button></div></header>
+          <div class="calendar-layout"><div class="calendar-grid-wrap"><div class="calendar-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div><div class="month-grid" id="monthGrid" role="grid" aria-labelledby="calendarMonthTitle"></div></div><aside class="day-agenda" id="dayAgenda" aria-label="所选日期安排" aria-live="polite"></aside></div>
+          <footer class="desk-calendar-foot"><span><i class="calendar-key"></i>已生成任务 <i class="calendar-key preview-key"></i>规则预览</span><span>点击日期查看当天安排；翻月不会生成新任务。</span></footer>
+          </div>
+        </section>
+    <p class="calendar-stage-footnote">按月翻阅，查看过去与未来的安排。进入工作台后，日历会收拢在右上角。</p>
+  </section>
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" inert role="dialog" aria-modal="true" aria-labelledby="drawerEyebrow" aria-hidden="true"><div class="drawer-head"><span id="drawerEyebrow">任务详情</span><button class="icon-button" id="closeDrawer" aria-label="关闭窗口"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="drawer-body" id="drawerBody"></div><div class="drawer-footer" id="drawerFooter"></div></aside>
+  <div class="search-popover" id="searchPopover" role="search" aria-label="任务搜索"><input id="searchInput" type="search" placeholder="按任务名称搜索" aria-label="按任务名称搜索" /><div class="search-results" id="searchResults"></div></div>
+  <div class="confirmation-overlay" id="confirmationOverlay" hidden></div>
+  <section class="confirmation-window" id="confirmationWindow" role="alertdialog" aria-modal="true" aria-labelledby="confirmationMessage" hidden inert><div class="confirmation-symbol" aria-hidden="true">!</div><h2 id="confirmationMessage"></h2><p>确认后将继续刚才的操作。</p><div class="confirmation-actions"><button class="secondary" id="confirmCancel">返回</button><button class="primary" id="confirmAccept">确认</button></div></section>
+  <div class="toast" id="toast" role="status"><span id="toastMessage"></span><button id="toastAction" hidden>撤销</button></div>
+  <div class="sr-only" id="boardAnnouncements" role="status" aria-live="polite"></div>
+  <script src="desktop-workbench-a-interactions.js"></script>
+  <script src="desktop-workbench-a-windows.js"></script>
+  <script src="desktop-workbench-a-calendar.js"></script>
+  <script src="desktop-workbench-a-overview.js"></script>
+  <script src="desktop-workbench-a.js"></script>
+</body>
+</html>
